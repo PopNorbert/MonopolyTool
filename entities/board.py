@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List
 
-from entities.fields import Field
+from entities.fields import *
 
 
 @dataclass

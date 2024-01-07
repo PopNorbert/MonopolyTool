@@ -52,6 +52,9 @@ class DummyField(Field):
 class PayField(Field):
     amount: int
 
+@dataclass
+class JailField(Field):
+    pass
 
 @dataclass
 class ChooseField(Field):

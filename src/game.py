@@ -1,9 +1,9 @@
 from dataclasses import dataclass
-from typing import List
+from typing import List, Match
 import random
 
 from entities.board import Board
-from entities.fields import Field
+from entities.fields import *
 from entities.player import Player
 
 
@@ -19,17 +19,33 @@ def log(message):
 class Game:
     players: List[Player]
     board: Board
+    roll: int=0
+    player: Player=None
 
-    def start(self):
+    def start(_):
         while True:
-            for player in self.players:
-                value = roll()
-                self.move(player, value)
+            for p in _.players:
+                _.player = p
+                _.roll = roll()
+                _.moveBy()
 
-    def move(self, player, value):
-        player.position = player.position + value
-        if value > 39:
-            player.position = player.position - 40
-            player.balance += 200
-        self.board[player.position].execute(player)
+    def moveBy(_):
+        _.player.position = _.player.position + _.roll
+        if _.player.position > 39:
+            _.player.position = _.player.position - 40
+            _.player.balance += 200
+        _.board[_.player.position].execute()
+
+
+    def execute(_):
+        field = _.board[_.player.position]
+        match field.:
+            case ColorProperty(rent):
+            case Railroad():
+            case Utility():
+            case ChooseField():
+            case JailField():
+            case PayField():
+
+
 
