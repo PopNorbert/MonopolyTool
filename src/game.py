@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from typing import List
 import random
 
+from entities.board import Board
 from entities.fields import Field
 from entities.player import Player
 
@@ -17,7 +18,7 @@ def log(message):
 @dataclass
 class Game:
     players: List[Player]
-    board: List[Field]
+    board: Board
 
     def start(self):
         while True:

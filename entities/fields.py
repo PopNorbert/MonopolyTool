@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import List
 
 from entities.player import Player
@@ -22,8 +22,6 @@ class ColorProperty(Field):
     def getRent(self):
         return self.rent[self.level]
 
-    def execute(self, player):
-
 
 @dataclass
 class Railroad(Field):
@@ -35,9 +33,6 @@ class Railroad(Field):
     def getRent(self):
         return self.rent[self.level]
 
-    def execute(self, player):
-
-
 @dataclass
 class Utility(Field):
     price: int
@@ -48,26 +43,16 @@ class Utility(Field):
     def getRent(self):
         pass
 
-    def execute(self, player):
-
 @dataclass
 class DummyField(Field):
-
-    def execute(self, player):
-        pass
+    pass
 
 
 @dataclass
 class PayField(Field):
     amount: int
 
-    def execute(self, player):
-        player.balance -= self.amount
 
-
-# TODO
 @dataclass
 class ChooseField(Field):
-
-    def execute(self, player):
-        pass
+    pass
